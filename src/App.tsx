@@ -1,20 +1,13 @@
 //This is the main file of the application. It is the first file that is executed when the application is started. It is responsible for rendering the application and handling the routing.
 
-import ListGroup from "./components/ListGroup";
+import Alert from "./components/Alert";
 
 function App() {
-  const handleSelectItem = (item: string) => {
-    console.log("Selected Item: ", item, "!");
-  };
-
-  let items = ["New York", "Los Angeles", "Chicago", "Houston"];
   return (
     <div>
-      <ListGroup
-        items={items}
-        heading="Cities"
-        onSelectItem={handleSelectItem}
-      />
+      <Alert>
+        Hello <span>World</span>
+      </Alert>
     </div>
   );
 }
