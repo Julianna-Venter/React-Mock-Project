@@ -1,10 +1,16 @@
 // import { MouseEvent } from "react";
 
 import { useState } from "react";
+
+interface ListGroupProps {
+  items: string[];
+  heading: string;
+}
+
 //each component has its own state
 //a component cannot return multiple elements. It can only return a single element.
-function ListGroup() {
-  let items = ["New York", "Los Angeles", "Chicago", "Houston"];
+//props are inputs to a component (pass data to a component)
+function ListGroup({ items, heading }: ListGroupProps) {
   // let selectedIndex = 0;
 
   //Hook => this component has data that changes over time
@@ -23,7 +29,7 @@ function ListGroup() {
   //You are not calling the handleClick function, you are passing a reference to it.
   return (
     <>
-      <h1>List Group</h1>
+      <h1>{heading}</h1>
       {items.length === 0 && <p>There are no items in the list.</p>}
       <ul className="list-group">
         {items.map((item, index) => (
