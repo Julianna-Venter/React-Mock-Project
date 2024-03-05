@@ -1,14 +1,22 @@
-import { MouseEvent } from "react";
+// import { MouseEvent } from "react";
 
+import { useState } from "react";
+//each component has its own state
 //a component cannot return multiple elements. It can only return a single element.
 function ListGroup() {
   let items = ["New York", "Los Angeles", "Chicago", "Houston"];
+  // let selectedIndex = 0;
+
+  //Hook => this component has data that changes over time
+  const [selectedIndex, setSelectedIndex] = useState(-1); //returns an array with 2 elements
+  // arr[0]; //Current state / variable (selectedIndex)
+  // arr[1]; //Updater function
 
   // items = [];
 
-  const handleClick = (event: MouseEvent) => {
-    console.log("Clicked: ", event, "!");
-  };
+  // const handleClick = (event: MouseEvent) => {
+  //   console.log("Clicked: ", event, "!");
+  // };
 
   // <> <=> <Fragment>
   //This is a built-in component that allows you to return multiple elements from a component, without adding extra nodes to the DOM.
@@ -18,8 +26,19 @@ function ListGroup() {
       <h1>List Group</h1>
       {items.length === 0 && <p>There are no items in the list.</p>}
       <ul className="list-group">
-        {items.map((item) => (
-          <li className="list-group-item" key={item} onClick={handleClick}>
+        {items.map((item, index) => (
+          <li
+            className={
+              selectedIndex === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
+            key={item}
+            onClick={() => {
+              setSelectedIndex(index);
+              console.log("Clicked: ", item, "!");
+            }}
+          >
             {item}
           </li>
         ))}
