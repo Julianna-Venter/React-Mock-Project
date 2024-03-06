@@ -14,7 +14,8 @@ function ListGroup({ items, heading, onSelectItem }: ListGroupProps) {
     console.log("Component Effect");
     //usually used to fetch data from an API
     //do not change the state in this function, especially if it is a state that is being watched by the component => infinite loop
-  });
+  }, []);
+  //empty dependency array will only render once on the first initial render
 
   return (
     <>
